@@ -228,7 +228,7 @@ class Header extends React.Component {
                     <Row>
                         {
                             this.state.loadChatContainer && 
-                            <ChatViewComponent />
+                            <ChatViewComponent enb ={this.state} />
                         }
                     </Row> 
                                       

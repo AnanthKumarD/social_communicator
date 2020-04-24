@@ -1,6 +1,6 @@
 import React from 'react';
 import VideoModal from './VideoModal';
-import { Player, BigPlayButton } from 'video-react';
+// import { Player, BigPlayButton } from 'video-react';
 
 import './video.scss'
 const Video = (props) => {

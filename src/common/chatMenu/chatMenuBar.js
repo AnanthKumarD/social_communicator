@@ -1,97 +1,129 @@
-import React ,{ Fragment }from 'react';
+import React, { Fragment } from 'react';
 
-import  './chatMenuBar.scss';
+import './chatMenuBar.scss';
 
-import { 
+// FormGroup,
+//     FormControl,
+//     InputGroup,
+//     Glyphicon,
+//     Badge,
+//     Navbar,
+import {
     Row,
-    Navbar,
     Image,
-    FormGroup,
-    FormControl,
-    InputGroup,
-    Glyphicon,
-    Badge
-} from 'react-bootstrap'
+
+} from 'react-bootstrap';
+import ChatViewComponent from '../popups/chatView/ChatViewComponent.js';
+
+
 const leftSidebarRoutes = [
-  { path: '/', exact: true, name: 'Caroll Summers', component: "Header" , imagePath : require("../../images/avatar67-sm.jpg") },
-  { path: '/', exact: true, name: 'Mathilda Blinker', component: "Header" , imagePath : require("../../images/avatar62-sm.jpg") },
-  { path: '/', exact: true, name: 'Micheal Maximoff', component: "Header" , imagePath : require("../../images/avatar68-sm.jpg") },
-  { path: '/', exact: true, name: 'Jr Caroll Summers', component: "Header" , imagePath : require("../../images/avatar69-sm.jpg") },
-  { path: '/', exact: true, name: 'Rachell Howlet', component: "Header" , imagePath : require("../../images/avatar70-sm.jpg") }
+    { path: '/', exact: true, name: 'Caroll Summers', component: "Header", imagePath: require("../../images/avatar67-sm.jpg") },
+    { path: '/', exact: true, name: 'Mathilda Blinker', component: "Header", imagePath: require("../../images/avatar62-sm.jpg") },
+    { path: '/', exact: true, name: 'Micheal Maximoff', component: "Header", imagePath: require("../../images/avatar68-sm.jpg") },
+    { path: '/', exact: true, name: 'Jr Caroll Summers', component: "Header", imagePath: require("../../images/avatar69-sm.jpg") },
+    { path: '/', exact: true, name: 'Rachell Howlet', component: "Header", imagePath: require("../../images/avatar70-sm.jpg") }
 ];
 
 class chatMenuBar extends React.Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            defaultSidebarOpenStatus : false,
-            routeData : leftSidebarRoutes
+            defaultSidebarOpenStatus: false,
+            routeData: leftSidebarRoutes
         }
     }
 
     render() {
-        return (
-            <Fragment>
-                <Navbar fluid className="alignChatMenu"  >
-                    <SideBarRendering listData={this.state.routeData} />
-                    <Image src={require('../../images/messageIcon.ico')}
-                    bsStyle = "default" 
-                    className = "chatIcon1 clear"
-                    onClick={()=>this.handleFriendPopupClickEvent("loadChatContainer")}
-                />
-                </Navbar>
+        return ( <
+            Fragment >
+            <
+            div fluid className = "alignChatMenu" >
+            <
+            SideBarRendering listData = { this.state.routeData }
+            /> <
+            Image src = { require('../../images/messageIcon.ico') }
+            bsStyle = "default"
+            className = "chatIcon1 clear"
+            onClick = {
+                () => this.handleFriendPopupClickEvent("loadChatContainer")
+            }
+            /> < /
+            div >
 
-            </Fragment>
+            <
+            /Fragment>
         )
     }
 };
 
 
 class SideBarRendering extends React.Component {
-    
+
     constructor(props) {
-        super(props);
-        this.state = {addClass: false}
-        this.handleClick = this.handleClick.bind(this)
-    }
-    handleClick(i) {
-        
-        if(i === 0){
-            this.setState({addClass: !this.state.addClass});
-        }else{
-            console.log(i,'menu index item')
+            super(props);
+            this.state = {
+                    addClass: false,
+                    loadChatContainer: false
+                }
+                //this.handleFriendPopupClickEvent = this.handleFriendPopupClickEvent.bind(this)
         }
+        //handleFriendPopupClickEvent(i) {
+    handleFriendPopupClickEvent = (param) => {
+        console.log(param, '>>>>>>')
+        if (param === "loadChatContainer") {
+            this.setState({
+                loadChatContainer: !this.state.loadChatContainer,
+            });
+        }
+
     }
 
-    render () {
+    render() {
         let boxClass = ["sidebar1"];
-        if(this.state.addClass) {
-          boxClass.push('green1');
+        if (this.state.addClass) {
+            boxClass.push('green1');
         }
-        var listItems = this.props.listData.map(function(data, index){
-            return (
-                <li className="nav-item leftmenu1" key={data.name} onClick={this.handleClick.bind(null,index)} >
-                    <img src={data.imagePath} alt='' />
-                    {this.state.addClass &&
-                        <span className="nav-link active sideBarTitle1" href="/">{data.name}</span>
-                    }
-                </li>
+        var listItems = this.props.listData.map(function(data, index) {
+            return ( <
+                li className = "nav-item leftmenu1"
+                key = { data.name }
+                onClick = { this.handleFriendPopupClickEvent.bind(null, "loadChatContainer", index) } >
+                <
+                img src = { data.imagePath }
+                alt = '' / > {
+                    this.state.addClass &&
+                    <
+                    span className = "nav-link active sideBarTitle1"
+                    href = "/" > { data.name } < /span>
+                } <
+                /li>
             );
-        },this);
+        }, this);
 
-        return (
-            <Fragment>
+        return ( <
+            Fragment >
 
-                <div className={boxClass.join(' ')}>
-                    <ul className="nav flex-column leftMenuDetails1">
-                        {listItems}
-                    </ul>
-                    
-                </div>
+            <
+            div className = { boxClass.join(' ') } >
+            <
+            ul className = "nav flex-column leftMenuDetails1" >
+            <
+            li className = "chatBoxTopSpace" > < /li> { listItems } < /
+            ul >
 
-            </Fragment>
+            <
+            /div> <
+            Row > {
+                this.state.loadChatContainer &&
+                <
+                ChatViewComponent / >
+            } <
+            /Row> 
+
+            <
+            /Fragment>
         );
     }
 };
-
+//onClick={this.handleClick.bind(null,index)}
 export default chatMenuBar;

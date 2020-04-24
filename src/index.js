@@ -16,9 +16,9 @@ import * as videoAlbumAction from './actions/videoAlbumAction';
 
 
 import { HashRouter, Switch} from 'react-router-dom';
-import createBrowserHistory from "history/createBrowserHistory";
+// import createBrowserHistory from "history/createBrowserHistory";
 
-const customHistory = createBrowserHistory();
+//const customHistory = createBrowserHistory();
 
 const store = createStore(rootReducer);
 store.dispatch(aboutActions.getAbout());

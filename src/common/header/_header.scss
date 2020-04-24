@@ -14,8 +14,9 @@
 }
 .profilemenu{
     display: block;
-    width: 200px
+    width: 250px
 }
+
 .wholeContainer{
     display: grid;
     align-items: stretch;
@@ -145,7 +146,8 @@
         display: none !important;
     }
     .notificationContainer{
-        grid-template-columns: 20% 20% 20% 40% !important;
+        grid-template-columns: 25% 25% 25% 50% !important;
+        z-index: 999;
     }
 
     .headerContainer{
@@ -195,7 +197,7 @@
     }
 
     .headerContainer{
-        grid-template-columns: 70px auto;
+        grid-template-columns: 70px auto 70px;
     }
 
     .inputFieldCss {
@@ -244,11 +246,11 @@
         font-weight: bold;
     }
     .notificationContainer{
-        grid-template-columns: 15% 15% 15% 30% 25% !important;
+        grid-template-columns: 15% 15% 15% 25% 25% !important;
     }
 
     .headerContainer{
-        grid-template-columns: 70px auto;
+        grid-template-columns: 70px auto 70px;
     }
 
     .inputFieldCss {

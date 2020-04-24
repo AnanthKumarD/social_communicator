@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Panel ,ListGroup, ListGroupItem , Popover} from 'react-bootstrap';
+import { Panel , Popover} from 'react-bootstrap';
+//,ListGroup, ListGroupItem 
 import './ProfileHoverPanel.scss';
 import Media from 'react-media';
 
@@ -89,9 +90,9 @@ class profileHoverPanel extends React.Component {
 };
 
 class YourAccount extends React.Component {
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
     render(){
         var listItems = this.props.data.map(function(data, index){
             return (

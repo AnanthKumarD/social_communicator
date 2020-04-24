@@ -47,7 +47,7 @@ class ChatListComponent extends React.Component {
           {this.state.messages.map(message => {
             return (
              <li key={message.id} className={message.messageSentFrom}>  
-                { message.messageSentFrom == "from" }              
+                { message.messageSentFrom === "from" }              
                 <img src={message.imagePath} className="chat-image" alt='' />
                 <p>
                   {message.text}
